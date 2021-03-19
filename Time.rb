@@ -11,21 +11,23 @@ def my_min_phase2(arr)
 end
 
 def my_min_phase1(arr)
-    new_arr = []
+    
 
-    arr.each_with_index do |ele1, idx1|
-        arr.each_with_index do |ele2, idx2|
-            if arr[idx1] > arr[idx2]
-                new_arr << arr[idx1]     
-            end
-        end
+   arr.each_with_index do |el1, i1| # O(n)
+    min = true # O1
+    
+    arr.each_with_index do |el2, i2| #On
+      next if i1 == i2          # O1
+      min = false if el2 < el1  #O1
     end
-    new_arr & arr
+    
+    return el1 if min #O1
+  end
+
 end
 
-def 
 
 list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 p my_min_phase2(list)  # =>  O(n)
-p my_min_phase1(list)  # =>  O(?)
-hj
+p my_min_phase1(list)  # =>  O(n^2)
+
