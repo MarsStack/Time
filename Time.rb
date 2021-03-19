@@ -54,11 +54,21 @@ def second_largest_contiguous_subsum(arr)
 
     (0...arr.length).each do |i|
         last_i = arr.length - 1
-        p arr[i..last_i]
+        # p arr[i..last_i]
         current = arr[i..last_i].sum
-        largest = current if largest < current largest < arr[i] 
+        largest = current if largest < current
+        # largest < arr[i] 
 
     end 
+
+    j = arr.length - 1
+    while j >= 0
+        current = arr[0..j].sum
+         p largest
+        largest = current if largest < current
+        largest = arr[j] if largest < arr[j]
+        j -= 1
+    end
 
     largest
 end 
