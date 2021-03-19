@@ -47,8 +47,24 @@ def largest_contiguous_subsum(arr)
     sums.max
 end
 
+
+def second_largest_contiguous_subsum(arr) 
+    largest = arr.first 
+    current = 0 
+
+    (0...arr.length).each do |i|
+        last_i = arr.length - 1
+        p arr[i..last_i]
+        current = arr[i..last_i].sum
+        largest = current if largest < current largest < arr[i] 
+
+    end 
+
+    largest
+end 
+
 list2 = [5, 3, -7]
-p largest_contiguous_subsum(list2) # => 8
+p second_largest_contiguous_subsum(list2) # => 8
 
 ## possible sub-sums
 #[5]           # => 5
@@ -58,8 +74,8 @@ p largest_contiguous_subsum(list2) # => 8
 #[3, -7]       # => -4
 #[-7]          # => -7
 
-list3 = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list3) # => 8 (from [7, -6, 7])
+# list3 = [2, 3, -6, 7, -6, 7]
+# p second_largest_contiguous_subsum(list3) # => 8 (from [7, -6, 7])
 
-list4 = [-5, -1, -3]
-p largest_contiguous_subsum(list4) # => -1 (from [-1])
+# list4 = [-5, -1, -3]
+# p second_largest_contiguous_subsum(list4) # => -1 (from [-1])
