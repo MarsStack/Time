@@ -28,8 +28,42 @@ def second_anagram?(str1, str2)
    str2.empty?
 end
 
+
 # p second_anagram?("gizmo", "sally")    #=> false
 # p second_anagram?("elvis", "lives")
 
+def sort_anagram?(str1, str2)
+    sorted1 = false
+    sorted2 = false
+    
+   until sorted1
+        sorted1 = true 
 
+        (0...str1.length - 1).each do |i|
+            case str1[i] <=> str1[i+1]
+            when 1
+                str1[i], str1[i+1] = str1[i+1], str1[i]
+                sorted1 = false 
+            end 
+        end  
+            
+    end
+    until sorted2
+        sorted2 = true 
 
+        (0...str2.length - 1).each do |i|
+            case str2[i] <=> str2[i+1]
+            when 1
+                str2[i], str2[i+1] = str2[i+1], str2[i]
+                sorted2 = false 
+            end 
+        end  
+            
+    end  
+    p str1 
+    p str2 
+    str1 == str2 
+end 
+
+p sort_anagram?("gizmo", "sally")    #=> false
+p sort_anagram?("elvis", "lives")
