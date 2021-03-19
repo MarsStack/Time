@@ -28,7 +28,7 @@ def second_anagram?(str1, str2)
    str2.empty?
 end
 
-
+# O(n) * O(1) * O(1) + O(1) => O(n)
 # p second_anagram?("gizmo", "sally")    #=> false
 # p second_anagram?("elvis", "lives")
 
@@ -59,11 +59,29 @@ def sort_anagram?(str1, str2)
             end 
         end  
             
-    end  
-    p str1 
-    p str2 
+    end
+
     str1 == str2 
 end 
 
-p sort_anagram?("gizmo", "sally")    #=> false
-p sort_anagram?("elvis", "lives")
+# O(k) + O(n) * O(k) * O(n) + O(n) * O(k) * O(n) => O(n^2) + O(n^2) => O(n^2)
+# p sort_anagram?("gizmo", "sally")    #=> false
+# p sort_anagram?("elvis", "lives")
+
+def fourth_anagram?(str1, str2)
+    hash_new = Hash.new(0)
+
+    str1.each_char do |char|
+        hash_new[char] += 1
+    end
+    
+    str2.each_char do |char|
+        hash_new[char] -= 1
+    end
+    
+    hash_new.all? { |k, v| v == 0 }
+end
+
+# O(k) + O(n) + O(n) + O(n) => O(n)
+p fourth_anagram?("gizmo", "sally")    #=> false
+p fourth_anagram?("elvis", "lives")
